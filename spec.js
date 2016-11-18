@@ -9,8 +9,12 @@ describe('js inverted index', function () {
   describe('case 000', function () {
     const input = readInput('000');
 
-    it('should return 4 result for tem "wirth"', function () {
-      expect(search(input, 'wirth')).to.have.length(4);
+    it('should return 4 result for term "Wirth"', function () {
+      expect(search(input, 'Wirth')).to.have.length(4);
+    });
+
+    it('should return 1 result for term "Rodrigo"', function () {
+      expect(search(input, 'Rodrigo')).to.have.length(1);
     });
   });
 });
