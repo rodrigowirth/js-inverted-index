@@ -9,12 +9,18 @@ describe('js inverted index', function () {
   describe('case 000', function () {
     const input = readInput('000');
 
-    it('should return 4 result for term "Wirth"', function () {
+    it('should return 4 results for term "Wirth"', function () {
       expect(search(input, 'Wirth')).to.have.length(4);
     });
 
     it('should return 1 result for term "Rodrigo"', function () {
       expect(search(input, 'Rodrigo')).to.have.length(1);
+    });
+
+    it('should return 4 sorted results for term "Rodrigo Wirth"', function () {
+      const result = search(input, 'Rodrigo Wirth');
+      expect(result).to.have.length(4);
+      expect(result[0]).to.be.equal('Rodrigo Wirth');
     });
   });
 });

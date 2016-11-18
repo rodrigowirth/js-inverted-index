@@ -12,7 +12,25 @@ exports.search = function (names, term) {
     });
   });
 
-  return index[term].map(function(id) {
+  const result = { };
+
+  const terms = term.split(' ');
+  const founds = terms.reduce(function(res, value) {
+    return res.concat(index[value]);
+  }, []);
+
+  const grouped = founds.reduce(function(res, id) {
+    res[id] = res[id] || 0;
+    res[id]++;
+    return res;
+  }, { });
+
+  const sorted = Object.keys(grouped)
+    .sort(function(id1, id2) {
+      return grouped[id1] < grouped[id2];
+    });
+
+  return sorted.map(function(id) {
     return registers[id];
   });
 }
