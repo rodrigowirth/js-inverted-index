@@ -16,8 +16,10 @@ exports.search = function (names, term) {
 
   const terms = term.split(' ');
   const founds = terms.reduce(function(res, value) {
-    return res.concat(index[value]);
+    return res.concat(index[value] || []);
   }, []);
+
+  console.log('founds ==> ', founds);
 
   const grouped = founds.reduce(function(res, id) {
     res[id] = res[id] || 0;

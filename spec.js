@@ -22,6 +22,18 @@ describe('js inverted index', function () {
       expect(result).to.have.length(4);
       expect(result[0]).to.be.equal('Rodrigo Wirth');
     });
+
+    it('should return 4 sorted results for term "Luís Irineu Wirth"', function () {
+      const result = search(input, 'Luís Irineu Wirth');
+      expect(result).to.have.length(4);
+      expect(result[0]).to.be.equal('Luís Irineu Wirth');
+      expect(result[1]).to.be.equal('Irineu Wirth');
+    });
+
+    it('should return 4 results for term "Someone Wirth"', function () {
+      const result = search(input, 'Someone Wirth');
+      expect(result).to.have.length(4);
+    });
   });
 });
 
