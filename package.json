@@ -7,5 +7,9 @@
     "test": "mocha --timeout 30000 --report spec --recursive --watch-extensions .spec.js ./spec"
   },
   "author": "Rodrigo Wirth",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  }
 }
