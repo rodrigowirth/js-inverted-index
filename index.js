@@ -7,8 +7,9 @@ exports.search = function (names, term) {
     const parts = name.split(' ');
 
     parts.forEach(function(part) {
-      index[part] = index[part] || [];
-      index[part].push(id);
+      const lower = part.toLowerCase();
+      index[lower] = index[lower] || [];
+      index[lower].push(id);
     });
   });
 
@@ -16,10 +17,8 @@ exports.search = function (names, term) {
 
   const terms = term.split(' ');
   const founds = terms.reduce(function(res, value) {
-    return res.concat(index[value] || []);
+    return res.concat(index[value.toLowerCase()] || []);
   }, []);
-
-  console.log('founds ==> ', founds);
 
   const grouped = founds.reduce(function(res, id) {
     res[id] = res[id] || 0;

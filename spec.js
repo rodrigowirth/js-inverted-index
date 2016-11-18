@@ -34,6 +34,10 @@ describe('js inverted index', function () {
       const result = search(input, 'Someone Wirth');
       expect(result).to.have.length(4);
     });
+
+    it('should return 4 results for term "wirth"', function () {
+      expect(search(input, 'wirth')).to.have.length(4);
+    });
   });
 });
 
