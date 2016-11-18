@@ -38,6 +38,10 @@ describe('js inverted index', function () {
     it('should return 4 results for term "wirth"', function () {
       expect(search(input, 'wirth')).to.have.length(4);
     });
+
+    it('should return 1 result for term "fatima"', function () {
+      expect(search(input, 'fatima')).to.have.length(1);
+    });
   });
 });
 

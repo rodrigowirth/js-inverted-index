@@ -1,3 +1,5 @@
+var removeDiacritics = require('diacritics').remove;
+
 exports.search = function (names, term) {
   const index = { };
   const registers = { };
@@ -7,9 +9,9 @@ exports.search = function (names, term) {
     const parts = name.split(' ');
 
     parts.forEach(function(part) {
-      const lower = part.toLowerCase();
-      index[lower] = index[lower] || [];
-      index[lower].push(id);
+      const sanitized = removeDiacritics(part.toLowerCase());
+      index[sanitized] = index[sanitized] || [];
+      index[sanitized].push(id);
     });
   });
 
@@ -17,7 +19,8 @@ exports.search = function (names, term) {
 
   const terms = term.split(' ');
   const founds = terms.reduce(function(res, value) {
-    return res.concat(index[value.toLowerCase()] || []);
+    const sanitized = removeDiacritics(value.toLowerCase());
+    return res.concat(index[sanitized] || []);
   }, []);
 
   const grouped = founds.reduce(function(res, id) {
