@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 30000 --report spec --recursive --watch-extensions .spec.js ./spec"
   },
   "author": "Rodrigo Wirth",
   "license": "ISC"
